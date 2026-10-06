@@ -1,0 +1,114 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+library(tidyverse)
+```
+
+
+```{css}
+body {
+  font-family: Arial, sans-serif;
+}
+
+h2, h3 {
+  color: #2c3e50;
+}
+
+p {
+  line-height: 1.6;
+}
+
+```
+
+## Tracking My Procrastination Episodes
+
+
+This report presents data collected from my observational logging form about procrastination episodes.  
+Each observation records a moment when I delayed doing an intended task, what task I was avoiding, what I did instead, how long I procrastinated for, and my stress-level when procrastinating.
+
+The purpose of this report is to explore patterns in my procrastination behaviour, including which tasks I avoid most often, which distraction activities are most common, and how much time is typically lost during these episodes.
+
+
+
+```{r}
+
+logged_data <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vR_Kd10ljJWzdtGTuIJp6_cE9V271d4MVxbJK9-NosxzyArSoGiPJfBea1BaSf2CCBXKSSji8txlPOC/pub?gid=1024395860&single=true&output=csv")
+
+latest_data <- logged_data %>%
+  rename(
+    timestamp = 1,
+    task_avoided = 2,
+    procrastination_minutes = 3,
+    activity_done = 4,
+    stress_level = 5
+  ) %>%
+  mutate(
+    procrastination_minutes = as.numeric(procrastination_minutes),
+    stress_level = as.numeric(stress_level)
+  )
+
+mean_minutes <- mean(latest_data$procrastination_minutes, na.rm = TRUE)
+max_minutes <- max(latest_data$procrastination_minutes, na.rm = TRUE)
+total_episodes <- nrow(latest_data)
+```
+**The average time spent procrastinating was `r round(mean_minutes, 1)` minutes.**
+
+**The longest procrastination episode recorded was `r max_minutes` minutes.**
+
+
+
+```{r}
+# Task that were most often avoided
+latest_data %>%
+  ggplot(aes(x = task_avoided)) +
+  geom_bar(fill = "steelblue") +
+  labs(
+    title = "Number of Procrastination Episodes by Task Avoided",
+    x = "Task avoided",
+    y = "Number of episodes"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 25, hjust = 1))
+```
+
+
+
+```{r}
+# Activities done instead of the intended tasks
+latest_data %>%
+  ggplot(aes(x = activity_done)) +
+  geom_bar(fill = "darkorange") +
+  labs(
+    title = "Activities Chosen Instead of the Intended Task",
+    x = "Replacement activity",
+    y = "Number of episodes"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 25, hjust = 1))
+```
+
+
+
+```{r}
+# Stress level distribution
+latest_data %>%
+  ggplot(aes(x = factor(stress_level))) +
+  geom_bar(fill = "purple") +
+  labs(
+    title = "Stress Level During Procrastination Episodes",
+    x = "Stress level (1 = low, 5 = high)",
+    y = "Number of episodes"
+  ) +
+  theme_minimal()
+
+
+```
+
+
+
+

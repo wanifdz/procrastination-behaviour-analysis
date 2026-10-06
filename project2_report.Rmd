@@ -1,0 +1,68 @@
+---
+title: "Project 2"
+subtitle: "STATS220 Semester One, 2026"
+author: "Nur Syazwani Binti Mohammad Fadzli 127032781"
+date: "30 March 2026"
+output:
+  html_document:
+    code_folding: hide
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = FALSE)
+```
+## Introduction
+
+The focus of my data collection was procrastination episodes. Specifically, I recorded instances where I delayed completing a task that I intended to do, such as studying or completing assignments. Each observation captured what task I was avoiding, how long I procrastinated, what activity I did instead, and my stress level. These observations were recorded multiple times over several days using a Google Form.
+
+One important guideline for designing forms that I considered was clarity and simplicity of questions. I ensured that each question was specific and easy to understand, avoiding ambiguity. For example, instead of asking a vague question about procrastination, I asked clearly defined questions such as “How many minutes did you spend procrastinating?” with numeric validation. 
+
+The data collected allows analysis of procrastination behaviour. By recording both the duration and context of procrastination episodes, I can identify patterns such as which tasks are most frequently avoided, and what activities are most commonly used as distractions. This enables a better understanding of my personal habits and time management.
+
+[View my Google Form](https://docs.google.com/forms/d/e/1FAIpQLSeDwDLLfkTH8yGthafW6KkylxdNjAbBRcy00ZADjC86PjzVUA/viewform?usp=header)
+
+Form design and data collection for this project were completed by me.
+
+## Dynamic report
+
+The Dynamic repost can be assessed through this link:
+[My Dynamic Report](https://wanifdz.github.io/stats220/)
+
+
+
+
+## Creativity
+For this project, I chose to focus on my own procrastination behaviour instead of using a general example. This made the data more personal, as it reflects real situations especially as a univeristy student.
+
+When designing the Google Form, I included different aspects of each procrastination episode, such as the task I was avoiding, what I did instead, how long I procrastinated, and my stress level at the time. This allowed me to explore patterns in more detail, rather than just looking at one variable.
+
+In the report, I didn’t just present graphs, but also explained what the results suggest about my behaviour. For example, I looked at which tasks I tend to avoid more and what distractions are most common. This helped turn the data into something more informative instead of just numbers.
+
+I also tried to keep the report clear and easy to follow by organising it into sections and making sure each part flows logically. Overall, the creativity in this project comes from the choice of topic, the way the data was collected, and how the findings are explained in a more personal way.
+
+
+
+## Learning reflection
+
+One important idea I learned from Module 2 is how dynamic reporting allows data and text to be combined together. By using inline R code, I was able to automatically display summary statistics such as the average procrastination time and total number of observations. This makes the report more efficient and ensures that results are always up to date when the data changes.
+
+I am interested in exploring more advanced data visualisation techniques and how a more engaging reports can be created. For example, I would like to learn how to build dashboards that allow users to interact with the data directly.
+
+Form design and data collection for this project were completed by me. To further develop my group work skills, I plan to participate more actively in group assignments and focus on improving communication with team members.
+
+## Appendix
+
+```{r file='exploration.R', eval=FALSE, echo=TRUE}
+
+```
+```{r file='dynamic_report.Rmd', eval=FALSE, echo=TRUE}
+
+```
+
+
+
+
+
+
+
